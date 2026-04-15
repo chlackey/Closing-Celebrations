@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>May Closing Celebrations — Event Planner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream:#F8F5EF; --cream-dark:#EDE8DF; --cream-mid:#E2DAC8;
+    --ink:#1C1916; --ink-mid:#4A443C; --ink-light:#8A8278; --ink-faint:#C4BBAE;
+    --gold:#B08A4E; --gold-light:#D4AE72; --gold-faint:#F0E4C8;
+    --bx:#2C3E50; --bx-lt:#E8EDF2;
+    --sp:#2D4A3E; --sp-lt:#E8EFF0;
+    --ok:#2D5A3D; --ok-bg:#E8F2EB;
+    --no:#7A2828; --no-bg:#F5EAEA;
+    --maybe:#7A5C1A; --maybe-bg:#F7F0E0;
+    --adm:#3B1F5E; --adm-lt:#F0EBF8; --adm-mid:#6B4E9B;
+  }
+  html { scroll-behavior:smooth; }
+  body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--ink); min-height:100vh; font-size:15px; line-height:1.6; }
+
+  /* HEADER */
+  .site-header { background:var(--ink); position:sticky; top:0; z-index:200; }
+  .hdr { max-width:960px; margin:0 auto; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:56px; }
+  .logo { display:flex; align-items:baseline; gap:12px; }
+  .logo-t { font-family:'Cormorant Garamond',serif; font-size:19px; color:#fff; }
+  .logo-p { width:1px; height:16px; background:rgba(255,255,255,.2); }
+  .logo-s { font-size:11px; color:rgba(255,255,255,.4); letter-spacing:.1em; text-transform:uppercase; }
+  .hdr-r { display:flex; align-items:center; gap:14px; }
+  .hdr-badge { font-size:11px; color:var(--gold-light); letter-spacing:.08em; text-transform:uppercase; }
+  .adm-btn { font-size:11px; padding:5px 12px; border-radius:5px; border:1px solid rgba(255,255,255,.2); background:transparent; color:rgba(255,255,255,.6); cursor:pointer; font-family:'DM Sans',sans-serif; transition:all .15s; }
+  .adm-btn:hover { border-color:rgba(255,255,255,.5); color:#fff; }
+  .adm-btn.on { background:var(--adm-mid); border-color:var(--adm-mid); color:#fff; }
+
+  /* HERO */
+  .hero { background:var(--ink); padding:3rem 2rem 2.5rem; border-bottom:1px solid rgba(176,138,78,.3); }
+  .hero-in { max-width:960px; margin:0 auto; }
+  .eyebrow { font-size:11px; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+  .hero-t { font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300; color:#fff; line-height:1.1; margin-bottom:14px; }
+  .hero-t em { font-style:italic; color:var(--gold-light); }
+  .hero-d { font-size:14px; color:rgba(255,255,255,.5); max-width:540px; line-height:1.7; }
+
+  /* SYNC BAR */
+  .sync-bar { background:var(--ink); border-top:1px solid rgba(255,255,255,.06); padding:5px 2rem; }
+  .sync-in { max-width:960px; margin:0 auto; display:flex; align-items:center; gap:8px; }
+  .sdot { width:7px; height:7px; border-radius:50%; background:var(--ink-light); flex-shrink:0; transition:background .3s; }
+  .sdot.spin { background:var(--gold); animation:pulse 1s infinite; }
+  .sdot.ok { background:#4CAF50; }
+  .sdot.err { background:#E53935; }
+  @keyframes pulse { 0%,100%{opacity:1}50%{opacity:.4} }
+  .slabel { font-size:11px; color:rgba(255,255,255,.35); }
+
+  /* MODALS */
+  .overlay { position:fixed; inset:0; background:rgba(28,25,22,.82); z-index:300; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px); }
+  .overlay.hide { display:none; }
+  .modal { background:#fff; border-radius:14px; padding:2.25rem; width:100%; max-width:370px; box-shadow:0 20px 50px rgba(0,0,0,.3); }
+  .modal-t { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400; color:var(--ink); margin-bottom:4px; }
+  .modal-s { font-size:13px; color:var(--ink-light); margin-bottom:1.25rem; line-height:1.5; }
+  .modal-btns { display:flex; gap:8px; margin-top:1rem; }
+  .mbtn-p { flex:1; padding:10px; font-size:13px; font-weight:500; border-radius:7px; border:none; background:var(--ink); color:#fff; cursor:pointer; font-family:'DM Sans',sans-serif; }
+  .mbtn-p:hover { background:var(--ink-mid); }
+  .mbtn-s { padding:10px 16px; font-size:13px; border-radius:7px; border:1px solid var(--cream-mid); background:transparent; color:var(--ink-light); cursor:pointer; font-family:'DM Sans',sans-serif; }
+  .pw-err { font-size:12px; color:var(--no); margin-bottom:.75rem; display:none; }
+  .pw-err.show { display:block; }
+  .fi { padding:9px 12px; border:1px solid var(--cream-mid); border-radius:7px; font-size:14px; font-family:'DM Sans',sans-serif; color:var(--ink); background:var(--cream); outline:none; width:100%; transition:border-color .15s; height:40px; }
+  .fi:focus { border-color:var(--ink-faint); background:#fff; }
+  .fi.err { border-color:var(--no); }
+  .flabel { font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-light); font-weight:500; display:block; margin-bottom:5px; }
+
+  /* ADMIN PANEL */
+  .adm-panel { background:var(--adm-lt); border-bottom:2px solid var(--adm-mid); padding:2rem; display:none; }
+  .adm-panel.on { display:block; }
+  .adm-in { max-width:960px; margin:0 auto; }
+  .adm-hrow { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:1.5rem; }
+  .adm-title { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:400; color:var(--adm); }
+  .adm-sub { font-size:12px; color:var(--adm-mid); }
+  .adm-tabs { display:flex; gap:8px; margin-bottom:1.5rem; }
+  .adm-tab { padding:7px 18px; font-size:12px; font-weight:500; border-radius:20px; border:1px solid rgba(59,31,94,.2); background:transparent; color:var(--adm-mid); cursor:pointer; font-family:'DM Sans',sans-serif; transition:all .15s; }
+  .adm-tab.on { background:var(--adm); color:#fff; border-color:var(--adm); }
+  .adm-sec { margin-bottom:1.75rem; }
+  .adm-sec-t { font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--adm-mid); font-weight:500; margin-bottom:10px; padding-bottom:6px; border-bottom:1px solid rgba(59,31,94,.12); }
+  .adm-vrow { background:#fff; border-radius:8px; padding:10px 14px; margin-bottom:8px; border:1px solid rgba(59,31,94,.08); }
+  .adm-vname { font-weight:500; font-size:14px; color:var(--ink); margin-bottom:6px; display:flex; align-items:center; justify-content:space-between; }
+  .adm-chip { font-size:11px; padding:2px 9px; border-radius:20px; background:var(--adm-lt); color:var(--adm); border:1px solid rgba(59,31,94,.15); font-weight:500; }
+  .adm-breakdown { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:5px; }
+  .rp { padding:1px 8px; border-radius:10px; font-size:11px; font-weight:500; }
+  .rp1 { background:#F0E4C8; color:#8A6020; }
+  .rp2 { background:var(--bx-lt); color:var(--bx); }
+  .rp3 { background:#EEF3F7; color:#3d5f7a; }
+  .adm-voters { font-size:11px; color:var(--ink-faint); }
+  .adm-table { width:100%; border-collapse:collapse; font-size:13px; background:#fff; border-radius:8px; overflow:hidden; border:1px solid rgba(59,31,94,.08); }
+  .adm-table th { font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--adm-mid); font-weight:500; text-align:left; padding:10px 14px; background:var(--adm-lt); border-bottom:1px solid rgba(59,31,94,.1); }
+  .adm-table td { padding:10px 14px; border-bottom:1px solid rgba(59,31,94,.06); color:var(--ink-mid); vertical-align:middle; }
+  .adm-table tr:last-child td { border-bottom:none; }
+  .adm-table td:first-child { font-weight:500; color:var(--ink); }
+  .adm-dgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:8px; }
+  .adm-ditem { background:#fff; border-radius:8px; padding:10px 12px; border:1px solid rgba(59,31,94,.08); }
+  .adm-dlabel { font-size:11px; font-weight:500; color:var(--adm); margin-bottom:4px; display:flex; justify-content:space-between; }
+  .adm-dcount { font-family:'Cormorant Garamond',serif; font-size:18px; font-weight:500; }
+  .adm-dnames { font-size:11px; color:var(--ink-light); line-height:1.5; }
+  .adm-del { background:none; border:none; cursor:pointer; color:var(--ink-faint); font-size:15px; padding:2px 5px; border-radius:4px; transition:color .15s; }
+  .adm-del:hover { color:var(--no); }
+  .adm-rfbtn { font-size:12px; padding:6px 14px; border-radius:5px; border:1px solid rgba(59,31,94,.2); background:#fff; color:var(--adm-mid); cursor:pointer; font-family:'DM Sans',sans-serif; }
+  .adm-rfbtn:hover { background:var(--adm-lt); }
+  .adm-logout { font-size:12px; padding:5px 12px; border-radius:5px; border:1px solid rgba(59,31,94,.2); background:transparent; color:var(--adm-mid); cursor:pointer; font-family:'DM Sans',sans-serif; }
+  .adm-logout:hover { background:#fff; }
+
+  /* MAIN */
+  .main { max-width:960px; margin:0 auto; padding:2.5rem 2rem 4rem; }
+  .ev-tabs { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:2.5rem; }
+  .ev-tab { background:#fff; border:1.5px solid var(--cream-mid); border-radius:12px; padding:1.25rem 1.5rem; cursor:pointer; transition:all .2s; text-align:left; position:relative; overflow:hidden; }
+  .ev-tab::before { content:''; position:absolute; top:0;left:0;right:0; height:3px; background:var(--cream-mid); transition:background .2s; }
+  .ev-tab.abx { border-color:var(--bx); background:var(--bx-lt); }
+  .ev-tab.abx::before { background:var(--bx); }
+  .ev-tab.asp { border-color:var(--sp); background:var(--sp-lt); }
+  .ev-tab.asp::before { background:var(--sp); }
+  .ev-tab:not(.abx):not(.asp):hover { border-color:var(--ink-faint); }
+  .etc { font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-light); margin-bottom:4px; }
+  .etn { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:500; color:var(--ink); margin-bottom:2px; }
+  .etp { font-size:12px; color:var(--ink-light); font-style:italic; }
+  .ets { margin-top:12px; display:flex; gap:12px; }
+  .ts { font-size:12px; color:var(--ink-mid); }
+  .ts strong { font-weight:500; color:var(--ink); }
+
+  .panel { display:none; }
+  .panel.on { display:block; }
+  .sec-hdr { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:1.25rem; padding-bottom:10px; border-bottom:1px solid var(--cream-mid); }
+  .sec-t { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400; color:var(--ink); }
+  .sec-m { font-size:12px; color:var(--ink-light); }
+  .note { background:var(--gold-faint); border-left:3px solid var(--gold); padding:10px 16px; font-size:13px; color:var(--ink-mid); margin-bottom:1.5rem; border-radius:0 6px 6px 0; line-height:1.6; }
+  .note strong { font-weight:500; color:var(--ink); }
+
+  /* VENUE CARDS */
+  .vcard { background:#fff; border:1px solid var(--cream-mid); border-radius:10px; padding:1.25rem 1.5rem; margin-bottom:12px; transition:border-color .2s; }
+  .vcard:hover { border-color:var(--ink-faint); }
+  .vcard.vbx { border-color:var(--bx); background:var(--bx-lt); }
+  .vcard.vsp { border-color:var(--sp); background:var(--sp-lt); }
+  .vtop { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:10px; }
+  .vleft { flex:1; min-width:0; }
+  .vnum { font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-light); margin-bottom:3px; }
+  .vname { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:500; color:var(--ink); line-height:1.2; margin-bottom:6px; }
+  .vdet { display:flex; flex-wrap:wrap; gap:5px 14px; font-size:12px; color:var(--ink-light); margin-bottom:8px; }
+  .vdet span { display:flex; align-items:center; gap:5px; }
+  .sbadge { display:inline-block; font-size:10px; padding:2px 9px; border-radius:20px; background:var(--gold-faint); color:var(--gold); border:1px solid rgba(176,138,78,.3); font-weight:500; margin-bottom:8px; }
+  .vblurb { font-size:13px; color:var(--ink-mid); line-height:1.65; margin-bottom:10px; padding-bottom:10px; border-bottom:1px dashed var(--cream-mid); }
+  .vlink { display:inline-flex; align-items:center; gap:5px; font-size:12px; color:var(--gold); text-decoration:none; font-weight:500; margin-bottom:12px; transition:color .15s; }
+  .vlink:hover { color:var(--ink); }
+
+  /* RANK BUTTONS */
+  .rank-btns { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:12px; }
+  .rbtn { padding:6px 13px; font-size:11px; font-weight:500; border-radius:20px; border:1.5px solid var(--cream-mid); background:#fff; cursor:pointer; transition:all .15s; color:var(--ink-light); font-family:'DM Sans',sans-serif; white-space:nowrap; }
+  .rbtn:hover { border-color:var(--ink-faint); color:var(--ink); }
+  .rbtn.r1 { border-color:#B08A4E; background:#B08A4E; color:#fff; }
+  .rbtn.r2 { border-color:var(--bx); background:var(--bx); color:#fff; }
+  .rbtn.r3 { border-color:#5a7a99; background:#5a7a99; color:#fff; }
+  .rkbadge { display:inline-flex; align-items:center; gap:4px; font-size:10px; font-weight:500; padding:2px 9px; border-radius:20px; margin-top:6px; }
+  .rkb1 { background:#F0E4C8; color:#B08A4E; border:1px solid rgba(176,138,78,.35); }
+  .rkb2 { background:var(--bx-lt); color:var(--bx); border:1px solid rgba(44,62,80,.25); }
+  .rkb3 { background:#EEF3F7; color:#3d5f7a; border:1px solid rgba(90,122,153,.3); }
+
+  /* VOTE BUTTON (SP) */
+  .vbtn { padding:8px 18px; font-size:12px; font-weight:500; border-radius:20px; border:1.5px solid var(--cream-mid); background:#fff; cursor:pointer; transition:all .15s; color:var(--ink-mid); font-family:'DM Sans',sans-serif; white-space:nowrap; }
+  .vbtn:hover { border-color:var(--ink-faint); color:var(--ink); }
+  .vbtn.vsp { border-color:var(--sp); background:var(--sp); color:#fff; }
+
+  /* BAR */
+  .vbar { border-top:1px solid var(--cream-mid); padding-top:12px; }
+  .vbar-row { display:flex; align-items:center; gap:12px; margin-bottom:4px; }
+  .vcnt { font-size:12px; color:var(--ink-mid); min-width:64px; }
+  .vpct { font-size:12px; color:var(--ink-light); min-width:32px; text-align:right; }
+  .bg { flex:1; height:4px; background:var(--cream-dark); border-radius:2px; overflow:hidden; }
+  .fill { height:100%; border-radius:2px; transition:width .4s cubic-bezier(.4,0,.2,1); }
+  .fbx { background:var(--bx); }
+  .fsp { background:var(--sp); }
+  .vbrk { font-size:11px; color:var(--ink-faint); margin-top:2px; }
+
+  /* DATE */
+  .dcard { background:#fff; border:1px solid var(--cream-mid); border-radius:12px; padding:1.75rem; margin-bottom:2rem; }
+  .dcard-t { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; color:var(--ink); margin-bottom:4px; }
+  .dcard-s { font-size:13px; color:var(--ink-light); margin-bottom:1.25rem; }
+  .dleg { font-size:12px; color:var(--ink-faint); font-style:italic; margin-bottom:12px; }
+  .dgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(100px,1fr)); gap:8px; margin-bottom:1.25rem; }
+  .dbtn { padding:10px 6px; border-radius:8px; border:1.5px solid var(--cream-mid); background:var(--cream); cursor:pointer; font-family:'DM Sans',sans-serif; transition:all .15s; text-align:center; }
+  .dbtn:hover { border-color:var(--ink-faint); background:#fff; }
+  .dbtn.sbx { border-color:var(--bx); background:var(--bx-lt); }
+  .dbtn.ssp { border-color:var(--sp); background:var(--sp-lt); }
+  .dday { font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-light); display:block; margin-bottom:2px; }
+  .dnum { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:500; color:var(--ink); display:block; line-height:1; }
+  .dtally { font-size:10px; color:var(--ink-faint); display:block; margin-top:4px; }
+  .dbtn.sbx .dnum { color:var(--bx); }
+  .dbtn.ssp .dnum { color:var(--sp); }
+  .dnrow { display:flex; gap:10px; align-items:flex-end; margin-bottom:.5rem; }
+  .dnrow .ff { flex:1; }
+  .dsave { padding:9px 20px; font-size:13px; font-weight:500; border-radius:7px; border:none; background:var(--ink); color:#fff; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all .15s; height:40px; white-space:nowrap; }
+  .dsave:hover { background:var(--ink-mid); }
+  .dres { margin-top:1.5rem; border-top:1px solid var(--cream-dark); padding-top:1.25rem; }
+  .dres-t { font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-light); margin-bottom:10px; font-weight:500; }
+  .drow { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+  .dlbl { min-width:72px; color:var(--ink-mid); font-weight:500; font-size:12px; }
+  .dbg { flex:0 0 80px; height:4px; background:var(--cream-dark); border-radius:2px; overflow:hidden; }
+  .dfi { height:100%; border-radius:2px; transition:width .4s; }
+  .dfbx { background:var(--bx); }
+  .dfsp { background:var(--sp); }
+  .dnames { flex:1; font-size:12px; color:var(--ink-light); }
+  .dcount { font-size:12px; color:var(--ink-mid); font-weight:500; min-width:28px; text-align:right; }
+
+  /* RSVP */
+  .rcard { background:#fff; border:1px solid var(--cream-mid); border-radius:12px; padding:1.75rem; margin-bottom:2rem; }
+  .rcard-t { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; color:var(--ink); margin-bottom:3px; }
+  .rcard-s { font-size:13px; color:var(--ink-light); margin-bottom:1.5rem; padding-bottom:1rem; border-bottom:1px solid var(--cream-dark); }
+  .fgrid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:1.25rem; }
+  .ff { display:flex; flex-direction:column; gap:5px; }
+  .attend-lbl { font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-light); font-weight:500; margin-bottom:8px; }
+  .attend-btns { display:flex; gap:8px; margin-bottom:1.25rem; flex-wrap:wrap; }
+  .abtn { padding:9px 20px; font-size:13px; border-radius:7px; border:1px solid var(--cream-mid); background:var(--cream); cursor:pointer; transition:all .15s; font-family:'DM Sans',sans-serif; color:var(--ink-mid); }
+  .abtn:hover { border-color:var(--ink-faint); }
+  .abtn.sy { background:var(--ok-bg); border-color:var(--ok); color:var(--ok); font-weight:500; }
+  .abtn.sn { background:var(--no-bg); border-color:var(--no); color:var(--no); font-weight:500; }
+  .abtn.sm { background:var(--maybe-bg); border-color:var(--maybe); color:var(--maybe); font-weight:500; }
+  .savebtn { padding:11px 28px; font-size:13px; font-weight:500; border-radius:7px; border:none; background:var(--ink); color:#fff; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all .15s; }
+  .savebtn:hover { background:var(--ink-mid); }
+  .toast { display:inline-block; margin-left:12px; font-size:12px; color:var(--ok); font-weight:500; opacity:0; transition:opacity .3s; }
+  .toast.on { opacity:1; }
+  .rlist { margin-top:1.5rem; padding-top:1.25rem; border-top:1px solid var(--cream-dark); }
+  .rlist-hdr { display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; flex-wrap:wrap; gap:8px; }
+  .rlist-t { font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-light); font-weight:500; }
+  .chips { display:flex; gap:8px; flex-wrap:wrap; }
+  .chip { font-size:11px; padding:3px 10px; border-radius:20px; font-weight:500; }
+  .cy { background:var(--ok-bg); color:var(--ok); }
+  .cn { background:var(--no-bg); color:var(--no); }
+  .cm { background:var(--maybe-bg); color:var(--maybe); }
+  .rtable { width:100%; border-collapse:collapse; font-size:13px; }
+  .rtable thead tr { border-bottom:1px solid var(--cream-dark); }
+  .rtable th { font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-light); font-weight:500; text-align:left; padding:6px 0 8px; }
+  .rtable td { padding:10px 0; border-bottom:1px solid var(--cream-dark); color:var(--ink-mid); vertical-align:middle; }
+  .rtable tr:last-child td { border-bottom:none; }
+  .rtable td:first-child { font-weight:500; color:var(--ink); }
+  .pill { display:inline-block; font-size:11px; padding:3px 10px; border-radius:20px; font-weight:500; }
+  .py { background:var(--ok-bg); color:var(--ok); }
+  .pn { background:var(--no-bg); color:var(--no); }
+  .pm { background:var(--maybe-bg); color:var(--maybe); }
+  .empty { font-size:13px; color:var(--ink-faint); font-style:italic; padding:12px 0; }
+
+  .dz { margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--cream-mid); display:flex; align-items:center; gap:12px; }
+  .dz-lbl { font-size:11px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.08em; }
+  .rstbtn { font-size:12px; color:var(--no); background:none; border:1px solid rgba(122,40,40,.2); padding:5px 12px; border-radius:5px; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all .15s; }
+  .rstbtn:hover { background:var(--no-bg); }
+
+  footer { background:var(--ink); color:rgba(255,255,255,.35); text-align:center; padding:1.25rem; font-size:12px; letter-spacing:.06em; margin-top:2rem; }
+
+  @media(max-width:560px){
+    .fgrid,.ev-tabs{grid-template-columns:1fr;}
+    .hero-t{font-size:34px;}
+    .dgrid{grid-template-columns:repeat(3,1fr);}
+    .vtop{flex-direction:column;}
+    .dnrow{flex-direction:column;}
+    .dsave{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ADMIN LOGIN OVERLAY -->
+<div class="overlay hide" id="admOverlay">
+  <div class="modal">
+    <div class="modal-t">Admin Access</div>
+    <div class="modal-s">Enter your password to view all team responses.</div>
+    <div class="ff" style="margin-bottom:.75rem">
+      <label class="flabel">Password</label>
+      <input class="fi" id="admPw" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAdmLogin()" />
+    </div>
+    <div class="pw-err" id="admErr">Incorrect password. Please try again.</div>
+    <div class="modal-btns">
+      <button class="mbtn-p" onclick="doAdmLogin()">Enter</button>
+      <button class="mbtn-s" onclick="closeAdmOverlay()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAME PROMPT OVERLAY -->
+<div class="overlay hide" id="nameOverlay">
+  <div class="modal">
+    <div class="modal-t">Before you vote…</div>
+    <div class="modal-s" id="nameSub">Please enter your name so your votes can be saved.</div>
+    <div class="ff" style="margin-bottom:.5rem">
+      <label class="flabel">Your name</label>
+      <input class="fi" id="nameInput" type="text" placeholder="e.g. Chad Lackey" onkeydown="if(event.key==='Enter')submitName()" />
+    </div>
+    <div class="modal-btns">
+      <button class="mbtn-p" onclick="submitName()">Continue</button>
+      <button class="mbtn-s" onclick="closeNameOverlay()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="hdr">
+    <div class="logo">
+      <span class="logo-t">Deloitte S&amp;T</span>
+      <div class="logo-p"></div>
+      <span class="logo-s">M&amp;A Advisory</span>
+    </div>
+    <div class="hdr-r">
+      <span class="hdr-badge">Internal Use Only</span>
+      <button class="adm-btn" id="admToggle" onclick="handleAdmToggle()">Admin</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-in">
+    <div class="eyebrow">May 2026 · New York</div>
+    <h1 class="hero-t">Closing <em>Celebrations</em></h1>
+    <p class="hero-d">Vote on venues and available dates, then RSVP for each dinner. All responses are saved and shared automatically.</p>
+  </div>
+</div>
+
+<!-- SYNC BAR -->
+<div class="sync-bar">
+  <div class="sync-in">
+    <div class="sdot" id="sdot"></div>
+    <span class="slabel" id="slabel">Connecting…</span>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="adm-panel" id="admPanel">
+  <div class="adm-in">
+    <div class="adm-hrow">
+      <div>
+        <div class="adm-title">Admin Dashboard</div>
+        <div class="adm-sub">Live view of all team responses</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button class="adm-rfbtn" onclick="doFetch()">↺ Refresh</button>
+        <button class="adm-logout" onclick="admLogout()">Log out</button>
+      </div>
+    </div>
+    <div class="adm-tabs">
+      <button class="adm-tab on" id="admTabBx" onclick="switchAdmTab('bx')">Blackstone — Project Aspen</button>
+      <button class="adm-tab" id="admTabSp" onclick="switchAdmTab('sp')">Stonepeak — Camaro &amp; Skysail</button>
+    </div>
+    <div id="admContent"></div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="ev-tabs">
+    <button class="ev-tab abx" id="tab-bx" onclick="switchEv('bx')">
+      <div class="etc">Client</div>
+      <div class="etn">Blackstone</div>
+      <div class="etp">Project Aspen</div>
+      <div class="ets">
+        <span class="ts"><strong id="bx-vc">0</strong> votes</span>
+        <span class="ts"><strong id="bx-rc">0</strong> RSVPs</span>
+      </div>
+    </button>
+    <button class="ev-tab" id="tab-sp" onclick="switchEv('sp')">
+      <div class="etc">Client</div>
+      <div class="etn">Stonepeak</div>
+      <div class="etp">Projects Camaro &amp; Skysail</div>
+      <div class="ets">
+        <span class="ts"><strong id="sp-vc">0</strong> votes</span>
+        <span class="ts"><strong id="sp-rc">0</strong> RSVPs</span>
+      </div>
+    </button>
+  </div>
+
+  <!-- BLACKSTONE PANEL -->
+  <div class="panel on" id="panel-bx">
+    <div class="sec-hdr"><h2 class="sec-t">Venue Vote</h2><span class="sec-m">Midtown · Near Blackstone HQ</span></div>
+    <div class="note">Burke's note: <strong>New York Yacht Club (★)</strong> is a private club where he holds membership. <strong>Rank up to 3 venues</strong> — 1st choice = 3 pts, 2nd = 2 pts, 3rd = 1 pt.</div>
+    <div id="bx-venues"></div>
+    <div class="sec-hdr" style="margin-top:2rem"><h2 class="sec-t">Date Availability</h2><span class="sec-m">May 2026 — select all that work</span></div>
+    <div id="bx-dates"></div>
+    <div class="sec-hdr" style="margin-top:2rem"><h2 class="sec-t">RSVP</h2><span class="sec-m">Let the team know</span></div>
+    <div class="rcard">
+      <div class="rcard-t">Your response</div>
+      <div class="rcard-s">Enter your name and attendance below</div>
+      <div class="fgrid">
+        <div class="ff"><label class="flabel">Your name</label><input class="fi" id="bx-rname" type="text" placeholder="e.g. Chad Lackey" /></div>
+        <div class="ff"><label class="flabel">Dietary restrictions</label><input class="fi" id="bx-diet" type="text" placeholder="None, vegetarian…" /></div>
+      </div>
+      <div class="attend-lbl">Attendance</div>
+      <div class="attend-btns">
+        <button class="abtn" id="bx-yes" onclick="setAttend('bx','yes')">✓ Attending</button>
+        <button class="abtn" id="bx-maybe" onclick="setAttend('bx','maybe')">? Maybe</button>
+        <button class="abtn" id="bx-no" onclick="setAttend('bx','no')">✕ Not attending</button>
+      </div>
+      <button class="savebtn" onclick="submitRSVP('bx')">Save RSVP</button>
+      <span class="toast" id="bx-rt">✓ Saved!</span>
+      <div class="rlist" id="bx-rlist"></div>
+    </div>
+    <div class="dz"><span class="dz-lbl">Admin</span><button class="rstbtn" onclick="resetEv('bx')">Reset all Blackstone data</button></div>
+  </div>
+
+  <!-- STONEPEAK PANEL -->
+  <div class="panel" id="panel-sp">
+    <div class="sec-hdr"><h2 class="sec-t">Venue Vote</h2><span class="sec-m">Hudson Yards · Near Stonepeak HQ</span></div>
+    <div class="note">Burke's note: The Stonepeak list is still developing — more options coming. Brochure not yet available for Death Ave.</div>
+    <div id="sp-venues"></div>
+    <div class="sec-hdr" style="margin-top:2rem"><h2 class="sec-t">Date Availability</h2><span class="sec-m">May 2026 — select all that work</span></div>
+    <div id="sp-dates"></div>
+    <div class="sec-hdr" style="margin-top:2rem"><h2 class="sec-t">RSVP</h2><span class="sec-m">Let the team know</span></div>
+    <div class="rcard">
+      <div class="rcard-t">Your response</div>
+      <div class="rcard-s">Enter your name and attendance below</div>
+      <div class="fgrid">
+        <div class="ff"><label class="flabel">Your name</label><input class="fi" id="sp-rname" type="text" placeholder="e.g. Chad Lackey" /></div>
+        <div class="ff"><label class="flabel">Dietary restrictions</label><input class="fi" id="sp-diet" type="text" placeholder="None, vegetarian…" /></div>
+      </div>
+      <div class="attend-lbl">Attendance</div>
+      <div class="attend-btns">
+        <button class="abtn" id="sp-yes" onclick="setAttend('sp','yes')">✓ Attending</button>
+        <button class="abtn" id="sp-maybe" onclick="setAttend('sp','maybe')">? Maybe</button>
+        <button class="abtn" id="sp-no" onclick="setAttend('sp','no')">✕ Not attending</button>
+      </div>
+      <button class="savebtn" onclick="submitRSVP('sp')">Save RSVP</button>
+      <span class="toast" id="sp-rt">✓ Saved!</span>
+      <div class="rlist" id="sp-rlist"></div>
+    </div>
+    <div class="dz"><span class="dz-lbl">Admin</span><button class="rstbtn" onclick="resetEv('sp')">Reset all Stonepeak data</button></div>
+  </div>
+</main>
+
+<footer>Deloitte &amp; Touche LLP · Strategy &amp; Transactions · Internal Planning Tool · May 2026</footer>
+
+<script>
+// ─────────────────────────────────────────────────────────────────────────────
+// CONFIG
+// ─────────────────────────────────────────────────────────────────────────────
+const SHEETDB = 'https://sheetdb.io/api/v1/922jfy1ujblhd';
+const ADMIN_PW = 'Kram3r12!';
+
+/*
+  HOW STORAGE WORKS
+  -----------------
+  SheetDB stores rows in a spreadsheet. We use exactly 2 rows — one per event:
+    row: { id:'bx', payload:'<JSON string>' }
+    row: { id:'sp', payload:'<JSON string>' }
+
+  The payload JSON contains:
+    {
+      venueVoters: [{name, ranks:{venueId:1|2|3}}],   ← BX ranked choice
+                   [{name, vote:venueId}],              ← SP simple
+      rsvps:       [{name, diet, status}],
+      dateVoters:  [{name, dates:[dateId,...]}]
+    }
+
+  All aggregate counts (total votes per venue, pts, etc.) are DERIVED
+  from these arrays on the fly — never stored. This means a person can
+  change their vote safely: we just find their record and overwrite it.
+
+  On page load:
+    1. Fetch both rows from SheetDB
+    2. Parse payloads into D.bx and D.sp
+    3. Read MY_NAME from localStorage
+    4. Render UI — person's own votes are visible because their name
+       matches a record in the fetched data
+*/
+
+// ─────────────────────────────────────────────────────────────────────────────
+// STATIC DATA
+// ─────────────────────────────────────────────────────────────────────────────
+const DATES = [
+  {id:'d05',day:'Tue',num:'5',label:'May 5'},{id:'d06',day:'Wed',num:'6',label:'May 6'},
+  {id:'d12',day:'Tue',num:'12',label:'May 12'},{id:'d13',day:'Wed',num:'13',label:'May 13'},
+  {id:'d14',day:'Thu',num:'14',label:'May 14'},{id:'d19',day:'Tue',num:'19',label:'May 19'},
+  {id:'d20',day:'Wed',num:'20',label:'May 20'},{id:'d21',day:'Thu',num:'21',label:'May 21'},
+  {id:'d26',day:'Tue',num:'26',label:'May 26'},{id:'d27',day:'Wed',num:'27',label:'May 27'},
+  {id:'d28',day:'Thu',num:'28',label:'May 28'},
+];
+
+const VENUES = {
+  bx:[
+    {id:'bx1',num:'01',name:'Empellon',room:'McNett Room',address:'510 Madison Ave',dist:'7 min from Blackstone',url:'https://www.empellon.com/events/empellon-midtown/',urlLabel:'empellon.com — Private Dining',blurb:"Chef Alex Stupak's flagship Midtown outpost is a two-floor, 160-seat restaurant at 53rd and Madison offering contemporary Mexican cuisine with an extensive agave and spirits program. The McNett Room is a fully private space seating up to 25, perfect for an intimate group dinner with inventive food and top-tier cocktails."},
+    {id:'bx2',num:'02',name:'The Splendid',room:"Captain's Quarters / Poet's Corner",address:'16 E 52nd St',dist:'6 min from Blackstone',url:'https://www.thesplendid.nyc',urlLabel:'thesplendid.nyc',blurb:"A newly opened upscale sporting club steps from St. Patrick's Cathedral, The Splendid pairs elevated American fare — lobster Newburg, crab cakes, a 42-oz tomahawk — with lively informal elegance. Chef Joey Fortunato (Extra Virgin) leads the kitchen. The Captain's Quarters and Poet's Corner seat 30–40."},
+    {id:'bx3',num:'03',name:'Ophelia Lounge',room:'TBD',address:'3 Mitchell Pl, 26th Floor',dist:'11 min from Blackstone',url:'https://www.opheliany.com/menus/#corporate-private-events/',urlLabel:'opheliany.com — Corporate Events',blurb:"Perched on the 26th floor of the historic Beekman Tower, Ophelia is an art deco cocktail lounge with a 360° greenhouse terrace and sweeping East River and skyline views. A one-time haunt of Frank Sinatra, it offers customizable corporate private event packages — a truly distinctive setting."},
+    {id:'bx4',num:'04',name:'Papillon Bistro & Bar',room:'Prohibition Room',address:'22 E 54th St',dist:'8 min from Blackstone',url:'https://www.papillonbistro.com/',urlLabel:'papillonbistro.com',blurb:"A Parisian-inspired two-story Victorian bistro in the heart of Midtown. The Prohibition Room is a fully private speakeasy-style space with its own dedicated bar and bartender, seating up to 22 — an intimate, character-filled spot for a closing celebration."},
+    {id:'bx5',num:'05',name:'New York Yacht Club',room:'TBD',address:'37 W 44th St',dist:'17 min from Blackstone',special:"Burke's private club — member access required",url:'https://nyyc.org/private-events',urlLabel:'nyyc.org — Private Events',blurb:"A National Historic Landmark founded in 1844, the NYYC's Beaux-Arts clubhouse on 44th Street is one of New York's most storied and exclusive venues. The celebrated Model Room — lined with historic yacht models and maritime detailing — makes for a truly one-of-a-kind backdrop. Burke holds membership and can host the group."},
+  ],
+  sp:[
+    {id:'sp1',num:'01',name:'BondST',room:'Private Dining Room',address:'20 Hudson Yards, 5th Floor',dist:'3 min from Stonepeak',url:'https://bondstrestaurant.com/hudsonyards/',urlLabel:'bondstrestaurant.com — Hudson Yards',blurb:"An expansion of the NoHo institution defining NYC's modern Japanese dining since 1998. BondST Hudson Yards brings inventive sashimi, Wagyu carpaccio, and an omakase bar to the fifth floor of Hudson Yards with spectacular views of the Vessel and Hudson River. Two private dining rooms seat up to 24."},
+    {id:'sp2',num:'02',name:'Death Ave',room:'TBD',address:'315 10th Ave',dist:'8 min from Stonepeak',url:'https://www.deathave.com/',urlLabel:'deathave.com',blurb:"A pioneering Hudson Yards gastropub serving playful Greek-American cuisine alongside cask-aged cocktails and house-brewed beers from its own subterranean brewery. The venue features private rooms, cozy nooks, and a spectacular 2,000 sq ft garden — a warm, candlelit atmosphere with genuine neighborhood character."},
+  ]
+};
+
+const LI = `<svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M5 2H2a1 1 0 00-1 1v7a1 1 0 001 1h7a1 1 0 001-1V7"/><path d="M8 1h3v3M11 1L5.5 6.5"/></svg>`;
+const SVG_CAL = `<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M5 3V2M11 3V2M2 7h12"/></svg>`;
+const SVG_PIN = `<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 9a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"/><path d="M13 8c0 4-5 7-5 7S3 12 3 8a5 5 0 0110 0z"/></svg>`;
+const SVG_CLK = `<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5l2 1.5"/></svg>`;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Server-side data (loaded from SheetDB)
+const D = {
+  bx: { venueVoters:[], rsvps:[], dateVoters:[] },
+  sp: { venueVoters:[], rsvps:[], dateVoters:[] }
+};
+
+// Per-user local identity (persists across refreshes)
+const MY = {
+  bx: localStorage.getItem('cel28-name-bx') || '',
+  sp: localStorage.getItem('cel28-name-sp') || ''
+};
+
+const pendingDates = { bx: new Set(), sp: new Set() };
+const formAttend   = { bx: null, sp: null };
+
+let isAdmin  = false;
+let admTab   = 'bx';
+let nameCallback = null; // pending action after name is set
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SHEETDB READ / WRITE
+// ─────────────────────────────────────────────────────────────────────────────
+
+function sync(state, msg) {
+  document.getElementById('sdot').className = 'sdot' + (state ? ' '+state : '');
+  document.getElementById('slabel').textContent = msg;
+}
+
+async function doFetch() {
+  sync('spin', 'Syncing…');
+  try {
+    const res  = await fetch(SHEETDB + '?sheet=Sheet1', { cache:'no-store' });
+    const rows = await res.json();
+
+    ['bx','sp'].forEach(ev => {
+      const row = rows.find(r => r.id === ev);
+      if (row && row.payload) {
+        try {
+          const p = JSON.parse(row.payload);
+          D[ev].venueVoters = p.venueVoters || [];
+          D[ev].rsvps       = p.rsvps       || [];
+          D[ev].dateVoters  = p.dateVoters  || [];
+        } catch(e) { /* malformed payload, keep defaults */ }
+      }
+    });
+
+    sync('ok', 'Up to date · ' + new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}));
+    ['bx','sp'].forEach(ev => { renderVenues(ev); renderDates(ev); renderRSVP(ev); });
+    updateStats();
+    if (isAdmin) renderAdminContent();
+  } catch(e) {
+    sync('err', 'Could not connect — check your network');
+    console.error('Fetch error:', e);
+  }
+}
+
+async function doPush(evId) {
+  sync('spin', 'Saving…');
+  const payload = JSON.stringify({
+    venueVoters: D[evId].venueVoters,
+    rsvps:       D[evId].rsvps,
+    dateVoters:  D[evId].dateVoters
+  });
+
+  try {
+    // Try PATCH first (update existing row)
+    const patch = await fetch(SHEETDB + '/id/' + evId + '?sheet=Sheet1', {
+      method: 'PATCH',
+      headers: { 'Content-Type':'application/json', 'Accept':'application/json' },
+      body: JSON.stringify({ data: { id: evId, payload } })
+    });
+    const pr = await patch.json();
+
+    // If row didn't exist yet, POST to create it
+    if (pr.updated === 0 || pr.error) {
+      await fetch(SHEETDB + '?sheet=Sheet1', {
+        method: 'POST',
+        headers: { 'Content-Type':'application/json', 'Accept':'application/json' },
+        body: JSON.stringify({ data: { id: evId, payload } })
+      });
+    }
+
+    sync('ok', 'Saved · ' + new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}));
+    if (isAdmin) renderAdminContent();
+  } catch(e) {
+    sync('err', 'Save failed — check your connection');
+    console.error('Push error:', e);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// NAME PROMPT
+// ─────────────────────────────────────────────────────────────────────────────
+
+function needName(evId, label, cb) {
+  if (MY[evId]) { cb(MY[evId]); return; }
+  nameCallback = { evId, cb };
+  document.getElementById('nameSub').textContent = label;
+  document.getElementById('nameInput').value = '';
+  document.getElementById('nameInput').className = 'fi';
+  document.getElementById('nameOverlay').classList.remove('hide');
+  setTimeout(() => document.getElementById('nameInput').focus(), 50);
+}
+
+function submitName() {
+  const val = document.getElementById('nameInput').value.trim();
+  if (!val) { document.getElementById('nameInput').className = 'fi err'; return; }
+  if (!nameCallback) { closeNameOverlay(); return; }
+  const { evId, cb } = nameCallback;
+  MY[evId] = val;
+  localStorage.setItem('cel28-name-'+evId, val);
+  nameCallback = null;
+  closeNameOverlay();
+  cb(val);
+}
+
+function closeNameOverlay() {
+  document.getElementById('nameOverlay').classList.add('hide');
+  nameCallback = null;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// DERIVED AGGREGATES (always computed from voter arrays, never stored)
+// ─────────────────────────────────────────────────────────────────────────────
+
+function bxRankedVotes() {
+  const out = {};
+  D.bx.venueVoters.forEach(vv => {
+    Object.entries(vv.ranks || {}).forEach(([vid, rank]) => {
+      if (!out[vid]) out[vid] = {1:0,2:0,3:0};
+      out[vid][rank] = (out[vid][rank]||0) + 1;
+    });
+  });
+  return out;
+}
+
+function bxScore(vid, rv) {
+  const r = rv[vid]||{}; return (r[1]||0)*3 + (r[2]||0)*2 + (r[3]||0)*1;
+}
+
+function spSimpleVotes() {
+  const out = {};
+  D.sp.venueVoters.forEach(vv => { if(vv.vote) out[vv.vote] = (out[vv.vote]||0)+1; });
+  return out;
+}
+
+function dateVoteCounts(evId) {
+  const out = {};
+  D[evId].dateVoters.forEach(dv => { (dv.dates||[]).forEach(d => { out[d]=(out[d]||0)+1; }); });
+  return out;
+}
+
+function myBxRanks() {
+  if (!MY.bx) return {};
+  const me = D.bx.venueVoters.find(v => v.name.toLowerCase()===MY.bx.toLowerCase());
+  return me ? (me.ranks||{}) : {};
+}
+
+function mySpVote() {
+  if (!MY.sp) return null;
+  const me = D.sp.venueVoters.find(v => v.name.toLowerCase()===MY.sp.toLowerCase());
+  return me ? (me.vote||null) : null;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// VENUE RENDERING
+// ─────────────────────────────────────────────────────────────────────────────
+const RL = {1:'1st choice',2:'2nd choice',3:'3rd choice'};
+const RC = {1:'rkb1',2:'rkb2',3:'rkb3'};
+
+function renderVenues(evId) {
+  const el = document.getElementById(evId+'-venues');
+  if (!el) return;
+
+  if (evId === 'bx') {
+    const rv = bxRankedVotes();
+    const mr = myBxRanks();
+    const maxSc = Math.max(1, ...VENUES.bx.map(v => bxScore(v.id, rv)));
+
+    el.innerHTML = VENUES.bx.map(v => {
+      const myR = mr[v.id]||null;
+      const r   = rv[v.id]||{};
+      const sc  = bxScore(v.id, rv);
+      const pct = Math.round(sc/maxSc*100);
+      const f=r[1]||0, s=r[2]||0, t=r[3]||0;
+      const hasV = (f+s+t)>0;
+      const badge = myR ? `<div style="margin-top:6px"><span class="rkbadge ${RC[myR]}">★ Your ${RL[myR]}</span></div>` : '';
+      const btns = [1,2,3].map(n => {
+        const on = myR===n;
+        return `<button class="rbtn ${on?'r'+n:''}" onclick="castRanked('${v.id}',${n})">${on?'✓ ':''} ${RL[n]}</button>`;
+      }).join('');
+
+      return `<div class="vcard ${myR?'vbx':''}">
+        <div class="vtop"><div class="vleft">
+          <div class="vnum">Venue ${v.num}</div>
+          <div class="vname">${v.name}</div>
+          ${v.special?`<div class="sbadge">★ ${v.special}</div>`:''}
+          <div class="vdet">
+            <span>${SVG_CAL}${v.room}</span>
+            <span>${SVG_PIN}${v.address}</span>
+            <span>${SVG_CLK}${v.dist}</span>
+          </div>${badge}
+        </div></div>
+        <div class="rank-btns">${btns}</div>
+        <p class="vblurb">${v.blurb}</p>
+        <a class="vlink" href="${v.url}" target="_blank" rel="noopener">${LI} ${v.urlLabel}</a>
+        <div class="vbar">
+          <div class="vbar-row">
+            <span class="vcnt">${sc} pts</span>
+            <div class="bg"><div class="fill fbx" style="width:${sc>0?pct:0}%"></div></div>
+            <span class="vpct">${hasV?pct+'%':'—'}</span>
+          </div>
+          ${hasV?`<div class="vbrk">${[f?f+'× 1st':'',s?s+'× 2nd':'',t?t+'× 3rd':''].filter(Boolean).join(' · ')}</div>`:''}
+        </div>
+      </div>`;
+    }).join('');
+
+  } else {
+    const sv = spSimpleVotes();
+    const mv = mySpVote();
+    const tot = Object.values(sv).reduce((a,b)=>a+b,0);
+
+    el.innerHTML = VENUES.sp.map(v => {
+      const cnt = sv[v.id]||0;
+      const pct = tot>0?Math.round(cnt/tot*100):0;
+      const on  = mv===v.id;
+      return `<div class="vcard ${on?'vsp':''}">
+        <div class="vtop"><div class="vleft">
+          <div class="vnum">Venue ${v.num}</div>
+          <div class="vname">${v.name}</div>
+          <div class="vdet">
+            <span>${SVG_CAL}${v.room}</span>
+            <span>${SVG_PIN}${v.address}</span>
+            <span>${SVG_CLK}${v.dist}</span>
+          </div>
+        </div>
+        <div><button class="vbtn ${on?'vsp':''}" onclick="castSimple('${v.id}')">${on?'✓ Voted':'Vote'}</button></div>
+        </div>
+        <p class="vblurb">${v.blurb}</p>
+        <a class="vlink" href="${v.url}" target="_blank" rel="noopener">${LI} ${v.urlLabel}</a>
+        <div class="vbar">
+          <div class="vbar-row">
+            <span class="vcnt">${cnt} vote${cnt!==1?'s':''}</span>
+            <div class="bg"><div class="fill fsp" style="width:${pct}%"></div></div>
+            <span class="vpct">${tot>0?pct+'%':'—'}</span>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+  updateStats();
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// VOTING ACTIONS
+// ─────────────────────────────────────────────────────────────────────────────
+
+function castRanked(venueId, rank) {
+  needName('bx', 'Please enter your name so your venue votes can be saved.', name => {
+    let rec = D.bx.venueVoters.find(v => v.name.toLowerCase()===name.toLowerCase());
+    if (!rec) { rec={name,ranks:{}}; D.bx.venueVoters.push(rec); }
+    if (!rec.ranks) rec.ranks={};
+
+    if (rec.ranks[venueId]===rank) {
+      delete rec.ranks[venueId]; // toggle off
+    } else {
+      // remove same rank from another venue
+      Object.keys(rec.ranks).forEach(vid=>{ if(rec.ranks[vid]===rank && vid!==venueId) delete rec.ranks[vid]; });
+      rec.ranks[venueId]=rank;
+    }
+    renderVenues('bx');
+    doPush('bx');
+  });
+}
+
+function castSimple(venueId) {
+  needName('sp', 'Please enter your name so your venue vote can be saved.', name => {
+    let rec = D.sp.venueVoters.find(v => v.name.toLowerCase()===name.toLowerCase());
+    if (!rec) { rec={name,vote:null}; D.sp.venueVoters.push(rec); }
+    rec.vote = rec.vote===venueId ? null : venueId;
+    renderVenues('sp');
+    doPush('sp');
+  });
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// DATE SECTION
+// ─────────────────────────────────────────────────────────────────────────────
+
+function renderDates(evId) {
+  const dvc = dateVoteCounts(evId);
+  const maxC = DATES.reduce((m,d)=>Math.max(m,dvc[d.id]||0),0);
+  const sel = pendingDates[evId];
+  const sc  = 's'+evId;
+  const fc  = 'df'+evId;
+
+  const grid = DATES.map(d => {
+    const cnt = dvc[d.id]||0;
+    return `<button class="dbtn ${sel.has(d.id)?sc:''}" onclick="toggleDate('${evId}','${d.id}')">
+      <span class="dday">${d.day}</span>
+      <span class="dnum">${d.num}</span>
+      <span class="dtally">${cnt>0?cnt+' avail.':'—'}</span>
+    </button>`;
+  }).join('');
+
+  const voters = D[evId].dateVoters;
+  const resHtml = voters.length>0 ? `
+    <div class="dres">
+      <div class="dres-t">Availability — ${voters.length} response${voters.length!==1?'s':''}</div>
+      ${DATES.map(d=>{
+        const cnt=dvc[d.id]||0; if(!cnt)return'';
+        const pct=maxC>0?Math.round(cnt/maxC*100):0;
+        const names=voters.filter(v=>v.dates&&v.dates.includes(d.id)).map(v=>v.name).join(', ');
+        return `<div class="drow">
+          <span class="dlbl">${d.label}</span>
+          <div class="dbg"><div class="dfi ${fc}" style="width:${pct}%"></div></div>
+          <span class="dnames">${names}</span>
+          <span class="dcount">${cnt}</span>
+        </div>`;
+      }).join('')}
+    </div>` : '';
+
+  document.getElementById(evId+'-dates').innerHTML = `
+    <div class="dcard">
+      <div class="dcard-t">When are you free?</div>
+      <div class="dcard-s">Click to toggle dates, then save your availability.</div>
+      <div class="dleg">Multiple selections allowed · click again to deselect</div>
+      <div class="dgrid">${grid}</div>
+      <div class="dnrow">
+        <div class="ff">
+          <label class="flabel">Your name</label>
+          <input class="fi" id="${evId}-dname" type="text" placeholder="e.g. Chad Lackey" value="${MY[evId]||''}" />
+        </div>
+        <button class="dsave" onclick="submitDates('${evId}')">Save availability</button>
+      </div>
+      <span class="toast" id="${evId}-dt">✓ Saved!</span>
+      ${resHtml}
+    </div>`;
+}
+
+function toggleDate(evId, dateId) {
+  if(pendingDates[evId].has(dateId)) pendingDates[evId].delete(dateId);
+  else pendingDates[evId].add(dateId);
+  renderDates(evId);
+}
+
+function submitDates(evId) {
+  const name = document.getElementById(evId+'-dname').value.trim();
+  if(!name){alert('Please enter your name.');return;}
+  if(!pendingDates[evId].size){alert('Please select at least one date.');return;}
+  MY[evId]=name; localStorage.setItem('cel28-name-'+evId, name);
+  let rec=D[evId].dateVoters.find(v=>v.name.toLowerCase()===name.toLowerCase());
+  if(!rec){rec={name,dates:[]};D[evId].dateVoters.push(rec);}
+  rec.dates=[...pendingDates[evId]];
+  pendingDates[evId].clear();
+  doPush(evId).then(()=>renderDates(evId));
+  showToast(evId+'-dt');
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// RSVP
+// ─────────────────────────────────────────────────────────────────────────────
+
+function setAttend(evId,status){
+  formAttend[evId]=status;
+  ['yes','maybe','no'].forEach(s=>{
+    document.getElementById(evId+'-'+s).className='abtn'+(formAttend[evId]===s?' s'+s[0]:'');
+  });
+}
+
+function submitRSVP(evId){
+  const name=document.getElementById(evId+'-rname').value.trim();
+  const diet=document.getElementById(evId+'-diet').value.trim();
+  if(!name){alert('Please enter your name.');return;}
+  if(!formAttend[evId]){alert('Please select your attendance.');return;}
+  MY[evId]=name; localStorage.setItem('cel28-name-'+evId,name);
+  let rec=D[evId].rsvps.find(r=>r.name.toLowerCase()===name.toLowerCase());
+  if(!rec){rec={name,diet:'None',status:'yes'};D[evId].rsvps.push(rec);}
+  rec.diet=diet||'None'; rec.status=formAttend[evId];
+  doPush(evId).then(()=>{renderRSVP(evId);updateStats();});
+  formAttend[evId]=null;
+  ['yes','maybe','no'].forEach(s=>{document.getElementById(evId+'-'+s).className='abtn';});
+  document.getElementById(evId+'-rname').value='';
+  document.getElementById(evId+'-diet').value='';
+  showToast(evId+'-rt');
+}
+
+function renderRSVP(evId){
+  const el=document.getElementById(evId+'-rlist');
+  if(!el)return;
+  const rsvps=D[evId].rsvps;
+  if(!rsvps.length){el.innerHTML='<p class="empty">No RSVPs yet — be the first to respond.</p>';return;}
+  const yes=rsvps.filter(r=>r.status==='yes').length;
+  const no=rsvps.filter(r=>r.status==='no').length;
+  const maybe=rsvps.filter(r=>r.status==='maybe').length;
+  const lbl={yes:'Attending',no:'Not attending',maybe:'Maybe'};
+  el.innerHTML=`
+    <div class="rlist-hdr">
+      <div class="rlist-t">Team responses (${rsvps.length})</div>
+      <div class="chips">
+        <span class="chip cy">${yes} attending</span>
+        ${maybe?`<span class="chip cm">${maybe} maybe</span>`:''}
+        ${no?`<span class="chip cn">${no} not attending</span>`:''}
+      </div>
+    </div>
+    <table class="rtable">
+      <thead><tr><th>Name</th><th>Dietary</th><th>Status</th></tr></thead>
+      <tbody>${rsvps.map(r=>`<tr>
+        <td>${r.name}</td><td>${r.diet||'—'}</td>
+        <td><span class="pill p${r.status[0]}">${lbl[r.status]}</span></td>
+      </tr>`).join('')}</tbody>
+    </table>`;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ADMIN
+// ─────────────────────────────────────────────────────────────────────────────
+
+function handleAdmToggle(){
+  if(isAdmin){admLogout();return;}
+  document.getElementById('admOverlay').classList.remove('hide');
+  setTimeout(()=>document.getElementById('admPw').focus(),50);
+}
+
+function closeAdmOverlay(){
+  document.getElementById('admOverlay').classList.add('hide');
+  document.getElementById('admPw').value='';
+  document.getElementById('admErr').classList.remove('show');
+  document.getElementById('admPw').classList.remove('err');
+}
+
+function doAdmLogin(){
+  const v=document.getElementById('admPw').value;
+  if(v===ADMIN_PW){
+    isAdmin=true; closeAdmOverlay();
+    document.getElementById('admPanel').classList.add('on');
+    document.getElementById('admToggle').classList.add('on');
+    document.getElementById('admToggle').textContent='★ Admin';
+    doFetch();
+  } else {
+    document.getElementById('admErr').classList.add('show');
+    document.getElementById('admPw').classList.add('err');
+    document.getElementById('admPw').value='';
+    document.getElementById('admPw').focus();
+  }
+}
+
+function admLogout(){
+  isAdmin=false;
+  document.getElementById('admPanel').classList.remove('on');
+  document.getElementById('admToggle').classList.remove('on');
+  document.getElementById('admToggle').textContent='Admin';
+}
+
+function switchAdmTab(ev){
+  admTab=ev;
+  document.getElementById('admTabBx').classList.toggle('on',ev==='bx');
+  document.getElementById('admTabSp').classList.toggle('on',ev==='sp');
+  renderAdminContent();
+}
+
+function admDelRSVP(evId,name){
+  D[evId].rsvps=D[evId].rsvps.filter(r=>r.name!==name);
+  doPush(evId).then(()=>{renderAdminContent();renderRSVP(evId);updateStats();});
+}
+
+function renderAdminContent(){
+  const ev=admTab;
+  const vlist=VENUES[ev];
+  const lbl={yes:'Attending',no:'Not attending',maybe:'Maybe'};
+
+  // Venues
+  let vhtml='';
+  if(ev==='bx'){
+    const rv=bxRankedVotes();
+    const sorted=[...vlist].sort((a,b)=>bxScore(b.id,rv)-bxScore(a.id,rv));
+    vhtml=sorted.map(v=>{
+      const r=rv[v.id]||{}; const sc=bxScore(v.id,rv);
+      const f=r[1]||0,s=r[2]||0,t=r[3]||0;
+      const bkdwn=[f?`<span class="rp rp1">${f}× 1st</span>`:'',s?`<span class="rp rp2">${s}× 2nd</span>`:'',t?`<span class="rp rp3">${t}× 3rd</span>`:'' ].filter(Boolean).join('');
+      const v1=D.bx.venueVoters.filter(vv=>vv.ranks&&vv.ranks[v.id]===1).map(vv=>vv.name);
+      const v2=D.bx.venueVoters.filter(vv=>vv.ranks&&vv.ranks[v.id]===2).map(vv=>vv.name);
+      const v3=D.bx.venueVoters.filter(vv=>vv.ranks&&vv.ranks[v.id]===3).map(vv=>vv.name);
+      const lines=[v1.length?`<div>1st: ${v1.join(', ')}</div>`:'',v2.length?`<div>2nd: ${v2.join(', ')}</div>`:'',v3.length?`<div>3rd: ${v3.join(', ')}</div>`:''  ].filter(Boolean).join('');
+      return `<div class="adm-vrow">
+        <div class="adm-vname"><span>${v.name}</span><span class="adm-chip">${sc} pts</span></div>
+        <div class="adm-breakdown">${bkdwn||'<span style="color:var(--ink-faint);font-size:11px">No votes yet</span>'}</div>
+        ${lines?`<div class="adm-voters">${lines}</div>`:''}
+      </div>`;
+    }).join('');
+  } else {
+    const sv=spSimpleVotes();
+    vhtml=vlist.map(v=>{
+      const cnt=sv[v.id]||0;
+      const voters=D.sp.venueVoters.filter(vv=>vv.vote===v.id).map(vv=>vv.name);
+      return `<div class="adm-vrow">
+        <div class="adm-vname"><span>${v.name}</span><span class="adm-chip">${cnt} vote${cnt!==1?'s':''}</span></div>
+        ${voters.length?`<div class="adm-voters">${voters.join(', ')}</div>`:'<div style="font-size:11px;color:var(--ink-faint)">No votes yet</div>'}
+      </div>`;
+    }).join('');
+  }
+
+  // RSVPs
+  const rsvps=D[ev].rsvps;
+  const rrows=!rsvps.length
+    ?`<tr><td colspan="4" style="font-style:italic;color:var(--ink-faint)">No RSVPs yet</td></tr>`
+    :rsvps.map(r=>`<tr>
+        <td>${r.name}</td><td>${r.diet||'—'}</td>
+        <td><span class="pill p${r.status[0]}">${lbl[r.status]}</span></td>
+        <td style="text-align:right"><button class="adm-del" onclick="admDelRSVP('${ev}','${r.name.replace(/'/g,"\\'")}')">×</button></td>
+      </tr>`).join('');
+
+  // Dates
+  const dvc=dateVoteCounts(ev);
+  const ditems=DATES.map(d=>{
+    const cnt=dvc[d.id]||0; if(!cnt)return'';
+    const names=D[ev].dateVoters.filter(v=>v.dates&&v.dates.includes(d.id)).map(v=>v.name);
+    return `<div class="adm-ditem">
+      <div class="adm-dlabel"><span>${d.label}</span><span class="adm-dcount">${cnt}</span></div>
+      <div class="adm-dnames">${names.join(', ')||'—'}</div>
+    </div>`;
+  }).filter(Boolean).join('');
+
+  const cl=ev==='bx'?'Blackstone (Project Aspen)':'Stonepeak (Camaro & Skysail)';
+  document.getElementById('admContent').innerHTML=`
+    <div class="adm-sec">
+      <div class="adm-sec-t">Venue Rankings — ${cl}</div>${vhtml}
+    </div>
+    <div class="adm-sec">
+      <div class="adm-sec-t">RSVPs — ${rsvps.length} response${rsvps.length!==1?'s':''}</div>
+      <table class="adm-table"><thead><tr><th>Name</th><th>Dietary</th><th>Status</th><th></th></tr></thead><tbody>${rrows}</tbody></table>
+    </div>
+    <div class="adm-sec">
+      <div class="adm-sec-t">Date Availability</div>
+      ${ditems?`<div class="adm-dgrid">${ditems}</div>`:'<p style="font-size:13px;color:var(--ink-faint);font-style:italic">No responses yet</p>'}
+    </div>`;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TABS / STATS / RESET / HELPERS
+// ─────────────────────────────────────────────────────────────────────────────
+
+function switchEv(evId){
+  ['bx','sp'].forEach(id=>{
+    document.getElementById('panel-'+id).classList.toggle('on',id===evId);
+    document.getElementById('tab-'+id).className='ev-tab'+(id===evId?' a'+id:'');
+  });
+}
+
+function updateStats(){
+  const rv=bxRankedVotes();
+  const bxV=VENUES.bx.reduce((s,v)=>{const r=rv[v.id]||{};return s+(r[1]||0);},0);
+  document.getElementById('bx-vc').textContent=bxV;
+  document.getElementById('bx-rc').textContent=D.bx.rsvps.length;
+  const spV=Object.values(spSimpleVotes()).reduce((a,b)=>a+b,0);
+  document.getElementById('sp-vc').textContent=spV;
+  document.getElementById('sp-rc').textContent=D.sp.rsvps.length;
+}
+
+function resetEv(evId){
+  const label=evId==='bx'?'Blackstone':'Stonepeak';
+  if(!confirm(`Reset ALL votes, RSVPs and date availability for ${label}? This cannot be undone.`))return;
+  D[evId]={venueVoters:[],rsvps:[],dateVoters:[]};
+  doPush(evId).then(()=>{renderVenues(evId);renderDates(evId);renderRSVP(evId);updateStats();if(isAdmin)renderAdminContent();});
+  formAttend[evId]=null; pendingDates[evId].clear();
+  ['yes','maybe','no'].forEach(s=>{const b=document.getElementById(evId+'-'+s);if(b)b.className='abtn';});
+  ['rname','diet'].forEach(f=>{const e=document.getElementById(evId+'-'+f);if(e)e.value='';});
+}
+
+function showToast(id){
+  const el=document.getElementById(id);
+  if(!el)return;
+  el.classList.add('on');
+  setTimeout(()=>el.classList.remove('on'),2500);
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────────────────────────────────────
+['bx','sp'].forEach(ev=>{renderVenues(ev);renderDates(ev);renderRSVP(ev);});
+updateStats();
+doFetch();
+setInterval(doFetch,60000);
+</script>
+</body>
+</html>
